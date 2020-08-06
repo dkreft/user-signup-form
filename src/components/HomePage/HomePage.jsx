@@ -1,27 +1,53 @@
+import { useCallback } from 'react'
+
 import Head from 'next/head'
 
-import styles from './styles.module.sass'
+import Form from './Form'
+
+import Styles from './styles.module.sass'
+
 
 export default function HomePage() {
-
+  const handleSubmit = useCallback(({ username, password }) => {
+    console.log('Submitted values: %o, %o', username, password)
+  })
+  
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <h1 className={ Styles.title }>
+        Exercise
+      </h1>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <p>
+        Please create a user signup form prototype. Preference is for
+        the code to be done using Reactjs, but you can also feel free
+        to use vanillajs. TST is currently utilizing reactjs v16.8 for
+        development.
+      </p>
 
-        
-      </main>
+      <h2>Requirements</h2>
+      
+      <ol>
+        <li>
+          Create a form with 3 input fields, for the username,
+          password, and confirm password, respectively.
+        </li>
+        <li>
+          Persist the state of the input fields entries.
+        </li>
+        <li>
+          The password and confirm password input field should validate
+          their entries by comparing both values.
+        </li>
+        <li>
+          Output to the user when both fields match or don't match
+        </li>
+        <li>
+          Bonus: style the form
+        </li>
+      </ol>
 
-      <footer className={styles.footer}>
-
-      </footer>
-    </div>
+      <Form handleSubmit={ handleSubmit } />
+    </>
   )
 }
