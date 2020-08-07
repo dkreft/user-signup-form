@@ -1,30 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# user-signup-form
 
-## Getting Started
+This is a technical interview homework problem given by TST.
 
-First, run the development server:
+## Assignment
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Create a user signup form prototype. Preference is for the code to be done using ReactJS, but you can also feel free to use vanilla JS. TST is currently utilizing reactjs v16.8 for development.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Requirements
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+1. Create a form with 3 input fields:
+  * username
+  * password
+  * confirm password
+2. Persist the state of the input fields entries.
+3. The password and confirm password input field should validate their entries by comparing both values.
+4. Output to the user when both fields match or do not match
+5. **Bonus:** style the form
 
-## Learn More
+## Installation
 
-To learn more about Next.js, take a look at the following resources:
+    $ git clone <repo url>
+    $ npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Start a development server
 
-## Deploy on Vercel
+    $ npm run dev
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Watch unit tests
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    $ npm run test
+
+### Code coverage
+
+    $ npm run test:coverage
+
+### Linting
+
+    $ npm run lint
+
+    $ npm run lint:fix
+
+### Build
+
+    $ npm run build
+
+## Technologies &amp; Tools Used
+
+* ES6+
+* NextJS (React)
+* `eslint`
+* `jest`
+* `enzyme`
+* `sass`
+* CSS modules - every component that needs styling has its own `styles.module.sass` file living right next to the owning component. This makes CSS maintenance and management trivial.
+
+## About the Directory Structure
+
+This application is structured using a modular hierarchy, which focuses on where components are used, rather than on the type of files they are. This makes it trivially easy to determine the scope of use of any given file.
+
+Please read https://medium.com/@alexmngn/how-to-better-organize-your-react-applications-2fd3ea1920f1 for more information on how this works.
+
+## Author
+
+Dan Kreft &lt;dan@kreft.net&gt;
