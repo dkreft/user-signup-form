@@ -170,6 +170,42 @@ describe('<Form />', () => {
     })
   })
 
+  describe('the <PasswordStatus />', () => {
+    subject(() => $component.find(PasswordStatus))
+
+    it('exists', () => {
+      expect($subject).toExist()
+    })
+
+    it('has the expected `className`', () => {
+      expect($subject).toHaveClassName(Styles.status)
+    })
+
+    it('has the correct `message` prop', () => {
+      expect($subject.prop('message')).toEqual(message)
+    })
+
+    describe('the `isValid` prop', () => {
+      subject(() => $subject.prop('isValid'))
+
+      context('when the password is valid', () => {
+        def('isValid', () => true)
+
+        it('is true', () => {
+          expect($subject).toBe(true)
+        })
+      })
+
+      context('when the password is invalid', () => {
+        def('isValid', () => false)
+
+        it('is false', () => {
+          expect($subject).toBe(false)
+        })
+      })
+    })
+  })
+
   describe('the submit button', () => {
     subject(() => $component.find(Button))
 
@@ -183,7 +219,7 @@ describe('<Form />', () => {
       subject(() => $subject.prop('disabled'))
 
       beforeEach(() => {
-        $component.find({ name: 'username'}).invoke('handleKeyUp')({
+        $component.find({ name: 'username' }).invoke('handleKeyUp')({
           name: 'username',
           value: $username,
         })
@@ -237,11 +273,11 @@ describe('<Form />', () => {
       subject(() => $subject.prop('handleClick'))
 
       beforeEach(() => {
-        $component.find({ name: 'username'}).invoke('handleKeyUp')({
+        $component.find({ name: 'username' }).invoke('handleKeyUp')({
           name: 'username',
           value: username,
         })
-        $component.find({ name: 'password'}).invoke('handleKeyUp')({
+        $component.find({ name: 'password' }).invoke('handleKeyUp')({
           name: 'password',
           value: password,
         })

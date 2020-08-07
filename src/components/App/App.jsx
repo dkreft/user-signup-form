@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import Head from 'next/head'
 
 import Styles from './styles.module.sass'
@@ -15,4 +16,9 @@ export default function App({ Component, pageProps }) {
       </main>
     </div>
   )
+}
+
+App.propTypes = {
+  Component: PropTypes.elementType.isRequired,
+  pageProps: PropTypes.object,
 }

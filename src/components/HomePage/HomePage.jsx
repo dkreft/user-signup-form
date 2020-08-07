@@ -1,7 +1,5 @@
 import { useCallback } from 'react'
 
-import Head from 'next/head'
-
 import Form from './Form'
 
 import Styles from './styles.module.sass'
@@ -10,7 +8,7 @@ import Styles from './styles.module.sass'
 export default function HomePage() {
   const handleSubmit = useCallback(({ username, password }) => {
     console.log('Submitted values: %o, %o', username, password)
-  })
+  }, [])
 
   return (
     <>
@@ -40,7 +38,7 @@ export default function HomePage() {
           their entries by comparing both values.
         </li>
         <li>
-          Output to the user when both fields match or don't match
+          Output to the user when both fields match or do not match
         </li>
         <li>
           Bonus: style the form
