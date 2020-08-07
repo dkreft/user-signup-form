@@ -20,6 +20,7 @@
     "@zeit/next-sass": "^1.0.1",
     "babel-eslint": "^10.1.0",
     "bdd-lazy-var": "^2.5.4",
+    "classnames": "^2.2.6",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^7.6.0",
