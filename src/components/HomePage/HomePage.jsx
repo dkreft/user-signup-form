@@ -13,42 +13,61 @@ export default function HomePage() {
   return (
     <>
       <h1 className={ Styles.title }>
-        Exercise
+        User Sign-up Form
       </h1>
 
-      <p>
-        Please create a user signup form prototype. Preference is for
-        the code to be done using Reactjs, but you can also feel free
-        to use vanillajs. TST is currently utilizing reactjs v16.8 for
-        development.
-      </p>
 
-      <h2>Requirements</h2>
+      <section>
+        <h2 className={ Styles.sectionTitle }>
+          Instructions
+        </h2>
 
-      <ol>
-        <li>
-          Create a form with 3 input fields, for the username,
-          password, and confirm password, respectively.
-        </li>
-        <li>
-          Persist the state of the input fields entries.
-        </li>
-        <li>
-          The password and confirm password input field should validate
-          their entries by comparing both values.
-        </li>
-        <li>
+        <p>
+          Create a user signup form prototype. Preference is for
+          the code to be done using ReactJS, but you can also feel free
+          to use vanilla JS. TST is currently utilizing reactjs v16.8 for
+          development.
+        </p>
 
-          Output to the user when both fields match or do not match
-        </li>
-        <li>
-          Bonus: style the form
-        </li>
-      </ol>
+        <h3 className={ Styles.sectionSubTitle }>
+          Requirements
+        </h3>
+        
+        <ol>
+          <li>
+            Create a form with 3 input fields:
+            <ul>
+              <li>username</li>
+              <li>password</li>
+              <li>confirm password</li>
+            </ul>
+          </li>
+          <li>
+            Persist the state of the input fields entries.
+          </li>
+          <li>
+            The password and confirm password input field should validate
+            their entries by comparing both values.
+          </li>
+          <li>
+            
+            Output to the user when both fields match or do not match
+          </li>
+          <li>
+            Bonus: style the form
+          </li>
+        </ol>
+      </section>
 
-      <h2>Behold</h2>
-      
-      <Form handleSubmit={ handleSubmit } />
+      <section>
+        <h2 className={ Styles.sectionTitle }>
+          Behold
+        </h2>
+
+        <div className={ Styles.formBlock }>
+          <Form handleSubmit={ handleSubmit } />
+        </div>
+      </section>
     </>
   )
 }

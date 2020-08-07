@@ -65,8 +65,10 @@ export default function Form({ handleSubmit }) {
 
   return (
     <div className={ Styles.root }>
-      <label>Username:</label>
-      <div>
+      <div className={ Styles.group }>
+        <label className={ Styles.label }>
+          Username:
+        </label>
         <Input
           autoComplete="off"
           type="text"
@@ -77,8 +79,10 @@ export default function Form({ handleSubmit }) {
         />
       </div>
 
-      <label>Password:</label>
-      <div>
+      <div className={ Styles.group }>
+        <label className={ Styles.label }>
+          Password:
+        </label>
         <Input
           autoComplete="new-password"
           type="password"
@@ -88,8 +92,10 @@ export default function Form({ handleSubmit }) {
         />
       </div>
 
-      <label>Confirm Password:</label>
-      <div>
+      <div className={ Styles.group }>
+        <label className={ Styles.label }>
+          Confirm Password:
+        </label>
         <Input
           autoComplete="new-password"
           type="password"
@@ -104,14 +110,12 @@ export default function Form({ handleSubmit }) {
         />
       </div>
 
-      <div>
-        <Button
-          handleClick={ handleButtonClick }
-          disabled={ !isSubmitEnabled }
-        >
-          Create account
-        </Button>
-      </div>
+      <Button
+        handleClick={ handleButtonClick }
+        disabled={ !isSubmitEnabled }
+      >
+        Create account
+      </Button>
     </div>
   )
 }

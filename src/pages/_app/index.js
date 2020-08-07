@@ -1,6 +1,6 @@
 import App from 'components/App'
 
-import './globals.css'
+import './globals.sass'
 
 export default App
 
