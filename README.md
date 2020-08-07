@@ -9,9 +9,9 @@ Create a user signup form prototype. Preference is for the code to be done using
 ### Requirements
 
 1. Create a form with 3 input fields:
-  * username
-  * password
-  * confirm password
+    * username
+    * password
+    * confirm password
 2. Persist the state of the input fields entries.
 3. The password and confirm password input field should validate their entries by comparing both values.
 4. Output to the user when both fields match or do not match
