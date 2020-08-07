@@ -4,7 +4,13 @@ import {
   useState,
 } from 'react'
 
+import PropTypes from 'prop-types'
+
 import validatePassword from './lib/validatePassword'
+
+import Button from './Button'
+import Input from './Input'
+import PasswordStatus from './PasswordStatus'
 
 import Styles from './styles.module.sass'
 
@@ -13,18 +19,20 @@ export default function Form({ handleSubmit }) {
   const [formState, setFormState] = useState({})
   const [passwordStatus, setPasswordStatus] = useState('')
   const [isPasswordValid, setPasswordValid] = useState(false)
-  
-  const onButtonClick = useCallback((e) => {
-    e.stopPropagation()
 
-    handleSubmit(formState)
+  const handleButtonClick = useCallback(() => {
+    const {
+      password,
+      username,
+    } = formState
+
+    handleSubmit({
+      password,
+      username,
+    })
   }, [handleSubmit, formState])
 
-  const onInputChange = useCallback((e) => {
-    e.stopPropagation()
-
-    const { name, value } = e.target
-
+  const handleKeyUp = useCallback(({ name, value }) => {
     setFormState((state) => ({
       ...state,
       [name]: value,
@@ -32,74 +40,74 @@ export default function Form({ handleSubmit }) {
   }, [setFormState])
 
   useEffect(() => {
-    const { password, confirm } = formState
+    const {
+      confirm,
+      password,
+    } = formState
 
-    const { isValid, message } = validatePassword(formState)
+    const { isValid, message } = validatePassword({
+      confirm,
+      password,
+    })
 
     setPasswordStatus(message)
     setPasswordValid(isValid)
-  }, [formState.password, formState.confirm, setPasswordValid, setPasswordStatus])
+  }, [formState, setPasswordValid, setPasswordStatus])
 
-  const isSubmitEnabled = isPasswordValid && formState.username
+  const isSubmitEnabled = Boolean(isPasswordValid && formState.username)
 
   return (
     <div>
       <div>Username:</div>
       <div>
-        <input
+        <Input
           autoComplete="off"
           type="text"
           name="username"
-          onChange={ onInputChange }
+          handleKeyUp={ handleKeyUp }
           defaultValue={ formState.username }
         />
       </div>
 
       <div>Password:</div>
       <div>
-        <input
+        <Input
           autoComplete="new-password"
           type="password"
           name="password"
-          onKeyUp={ onInputChange }
+          handleKeyUp={ handleKeyUp }
           defaultValue={ formState.password }
         />
       </div>
 
       <div>Confirm Password:</div>
       <div>
-        <input
+        <Input
           autoComplete="new-password"
           type="password"
           name="confirm"
-          onKeyUp={ onInputChange }
+          handleKeyUp={ handleKeyUp }
           defaultValue={ formState.confirm }
         />
         <PasswordStatus
+          className={ Styles.status }
           isValid={ isPasswordValid }
           message={ passwordStatus }
         />
       </div>
 
       <div>
-        <button
-          type="submit"
-          onClick={ onButtonClick }
+        <Button
+          handleClick={ handleButtonClick }
           disabled={ !isSubmitEnabled }
         >
           Create account
-        </button>
+        </Button>
       </div>
     </div>
   )
 }
 
-function PasswordStatus({ isValid, message }) {
-  const className = ( isValid ) ? Styles.okay : Styles.error
-
-  return (
-    <div className={ className }>
-      { message }
-    </div>
-  )
+Form.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
 }
