@@ -47,7 +47,8 @@
     ],
     "coveragePathIgnorePatterns": [
       "<rootDir>/.*index.js",
-      "<rootDir>/test/"
+      "<rootDir>/test/",
+      "<rootDir>/src/pages/"
     ],
     "modulePaths": [
       "<rootDir>/src"
