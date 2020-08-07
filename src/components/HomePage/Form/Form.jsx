@@ -1,6 +1,7 @@
 import {
   useCallback,
   useEffect,
+  useRef,
   useState,
 } from 'react'
 
@@ -16,6 +17,8 @@ import Styles from './styles.module.sass'
 
 
 export default function Form({ handleSubmit }) {
+  const usernameInput = useRef(null)
+
   const [formState, setFormState] = useState({})
   const [passwordStatus, setPasswordStatus] = useState('')
   const [isPasswordValid, setPasswordValid] = useState(false)
@@ -54,11 +57,15 @@ export default function Form({ handleSubmit }) {
     setPasswordValid(isValid)
   }, [formState, setPasswordValid, setPasswordStatus])
 
+  useEffect(() => {
+    usernameInput.current.focus()
+  }, [])
+
   const isSubmitEnabled = Boolean(isPasswordValid && formState.username)
 
   return (
-    <div>
-      <div>Username:</div>
+    <div className={ Styles.root }>
+      <label>Username:</label>
       <div>
         <Input
           autoComplete="off"
@@ -66,10 +73,11 @@ export default function Form({ handleSubmit }) {
           name="username"
           handleKeyUp={ handleKeyUp }
           defaultValue={ formState.username }
+          ref={ usernameInput }
         />
       </div>
 
-      <div>Password:</div>
+      <label>Password:</label>
       <div>
         <Input
           autoComplete="new-password"
@@ -80,7 +88,7 @@ export default function Form({ handleSubmit }) {
         />
       </div>
 
-      <div>Confirm Password:</div>
+      <label>Confirm Password:</label>
       <div>
         <Input
           autoComplete="new-password"

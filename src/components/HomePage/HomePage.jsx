@@ -38,6 +38,7 @@ export default function HomePage() {
           their entries by comparing both values.
         </li>
         <li>
+
           Output to the user when both fields match or do not match
         </li>
         <li>
@@ -45,6 +46,8 @@ export default function HomePage() {
         </li>
       </ol>
 
+      <h2>Behold</h2>
+      
       <Form handleSubmit={ handleSubmit } />
     </>
   )

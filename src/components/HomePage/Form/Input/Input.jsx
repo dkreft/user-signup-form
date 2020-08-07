@@ -1,10 +1,14 @@
-import { useCallback } from 'react'
+import {
+  forwardRef,
+  useCallback,
+} from 'react'
+
 import PropTypes from 'prop-types'
 
 import Styles from './styles.module.sass'
 
 
-export default function Input({ name, handleKeyUp, ...props }) {
+function Input({ name, handleKeyUp, ...props }, ref) {
   const onKeyUp = useCallback((e) => {
     e.stopPropagation()
 
@@ -24,9 +28,12 @@ export default function Input({ name, handleKeyUp, ...props }) {
       { ...props }
       className={ Styles.root }
       onKeyUp={ onKeyUp }
+      ref={ ref }
     />
   )
 }
+
+export default forwardRef(Input)
 
 Input.propTypes = {
   handleKeyUp: PropTypes.func.isRequired,

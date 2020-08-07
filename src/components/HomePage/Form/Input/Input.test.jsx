@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme'
+import { mount } from 'enzyme'
 
 import Input from './Input'
 
@@ -6,6 +6,8 @@ import Styles from './styles.module.sass'
 
 
 describe('<Input />', () => {
+  const ref = React.createRef()
+
   const name = 'oweretiu'
   const handleKeyUp = jest.fn()
   const otherProps = {
@@ -13,11 +15,12 @@ describe('<Input />', () => {
     foo: 'bar',
   }
 
-  subject(() => shallow(<Input
+  subject(() => mount(<Input
     name={ name }
     handleKeyUp={ handleKeyUp }
+    ref={ ref }
     { ...otherProps }
-  />))
+  />).childAt(0))
 
   it('renders', () => {
     expect($subject).toExist()
@@ -33,6 +36,10 @@ describe('<Input />', () => {
       className: Styles.root,
       onKeyUp: expect.any(Function),
     })
+  })
+
+  it('has the forwarded ref', () => {
+    expect($subject.instance()).toEqual(ref.current)
   })
 
   describe('the `onKeyUp` prop', () => {
