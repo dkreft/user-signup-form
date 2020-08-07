@@ -11,7 +11,7 @@ export default function HomePage() {
   const handleSubmit = useCallback(({ username, password }) => {
     console.log('Submitted values: %o, %o', username, password)
   })
-  
+
   return (
     <>
       <h1 className={ Styles.title }>
@@ -26,7 +26,7 @@ export default function HomePage() {
       </p>
 
       <h2>Requirements</h2>
-      
+
       <ol>
         <li>
           Create a form with 3 input fields, for the username,
