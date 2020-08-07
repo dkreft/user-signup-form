@@ -3,22 +3,16 @@ import Head from 'next/head'
 import Styles from './styles.module.sass'
 
 
-function MyApp({ Component, pageProps }) {
+export default function App({ Component, pageProps }) {
   return (
     <div className={ Styles.root }>
       <Head>
-        <title>Homework Assignment</title>
+        <title>TST Homework Assignment</title>
       </Head>
 
       <main className={ Styles.main }>
-        <Component {...pageProps} />
+        <Component { ...pageProps } />
       </main>
-      
-      <footer className={ Styles.footer }>
-        
-      </footer>
     </div>
   )
 }
-
-export default MyApp
