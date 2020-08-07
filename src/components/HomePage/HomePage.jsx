@@ -31,6 +31,10 @@ export default function HomePage() {
           development.
         </p>
 
+        <p>
+          <i>Note: Actual React version is { React.version }</i>
+        </p>
+
         <h3 className={ Styles.sectionSubTitle }>
           Requirements
         </h3>
