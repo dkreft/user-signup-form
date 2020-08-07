@@ -7,7 +7,10 @@ import Styles from './styles.module.sass'
 
 export default function HomePage() {
   const handleSubmit = useCallback(({ username, password }) => {
-    console.log('Submitted values: %o, %o', username, password)
+    console.log('Submitted values: %o', {
+      username,
+      password,
+    })
   }, [])
 
   return (
@@ -15,7 +18,6 @@ export default function HomePage() {
       <h1 className={ Styles.title }>
         User Sign-up Form
       </h1>
-
 
       <section>
         <h2 className={ Styles.sectionTitle }>
@@ -32,7 +34,7 @@ export default function HomePage() {
         <h3 className={ Styles.sectionSubTitle }>
           Requirements
         </h3>
-        
+
         <ol>
           <li>
             Create a form with 3 input fields:
@@ -50,7 +52,7 @@ export default function HomePage() {
             their entries by comparing both values.
           </li>
           <li>
-            
+
             Output to the user when both fields match or do not match
           </li>
           <li>
@@ -66,6 +68,10 @@ export default function HomePage() {
 
         <div className={ Styles.formBlock }>
           <Form handleSubmit={ handleSubmit } />
+
+          <div className={ Styles.note }>
+            Note: Results are printed to the console
+          </div>
         </div>
       </section>
     </>

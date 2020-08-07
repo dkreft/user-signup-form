@@ -16,7 +16,7 @@ describe('<HomePage />', () => {
   it('has the expected title markup', () => {
     expect($subject).toContainReact(
       <h1 className={ Styles.title }>
-        Exercise
+        User Sign-up Form
       </h1>
     )
   })
@@ -46,8 +46,10 @@ describe('<HomePage />', () => {
       it('invokes `console.log` with the correct arguments', () => {
         expect(window.console.log).toHaveBeenCalledWith(
           expect.any(String),
-          username,
-          password
+          {
+            username,
+            password,
+          }
         )
       })
     })
